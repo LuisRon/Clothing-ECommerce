@@ -17,7 +17,7 @@ class App extends Component {
   unsubscribeFromAuth = null;
 
   componentDidMount() {
-    const { setCurrentUser } = this.props;
+    const { setCurrentUser} = this.props;
 
     this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
       if (userAuth) {
@@ -46,7 +46,7 @@ class App extends Component {
           <Route exact path='/' component={HomePage} />
           <Route path='/shop' component={ShopPage} />
           <Route exact path='/checkout' component={Checkout} />
-          <Route exact path='/signin' render={()=> this.props.currentUser ? (<Redirect to='/'/>) : (<SignInAndSignUp/>)} />
+          <Route exact path='/signin' render={() => this.props.currentUser ? (<Redirect to='/' />) : (<SignInAndSignUp />)} />
         </Switch>
       </div>
     );
@@ -55,7 +55,7 @@ class App extends Component {
 }
 
 const mapStateToProps = ({user}) => ({
-  currentUser: user.currentUser
+  currentUser: user.currentUser,
 })
 
 const mapDispatchToProps = dispatch => ({
